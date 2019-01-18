@@ -13,7 +13,7 @@
    System.out.println("Molly");
    System.out.println("Lab 1");
    System.out.println("Introduction to Java");
-   System.out.println("20190116");
+   System.out.println("16 Jan 2019");
    System.out.println("CMSC 255 003");
    System.out.println();
   }
