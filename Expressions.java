@@ -1,3 +1,8 @@
+/**************************************************************
+* This is a pre-written program for CMSC255-003 Lab 3.
+* The assignment is to add block comment about what the displayed value will be after performing the math function.
+* This is also to practice adding block comment for our final project at the end of the semester.
+***************************************************************/
 
 public class Expressions 
 {
