@@ -7,12 +7,14 @@ import javax.swing.border.EmptyBorder;
 import java.awt.GridLayout;
 import java.awt.Button;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import java.awt.Color;
 import java.awt.Font;
+import javax.swing.JList;
 
 public class ChineseZodiac extends JFrame {
 
@@ -48,6 +50,10 @@ public class ChineseZodiac extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton submitButton = new JButton("Submit");
+		submitButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		submitButton.setBounds(458, 69, 141, 35);
 		contentPane.add(submitButton);
 		
@@ -56,7 +62,7 @@ public class ChineseZodiac extends JFrame {
 		contentPane.add(userInput);
 		userInput.setColumns(10);
 		
-		JTextPane userInstructions = new JTextPane();
+		JLabel userInstructions = new JLabel();
 		userInstructions.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		userInstructions.setForeground(Color.BLACK);
 		userInstructions.setBackground(Color.WHITE);
