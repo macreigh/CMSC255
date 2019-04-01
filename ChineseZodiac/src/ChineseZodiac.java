@@ -61,7 +61,18 @@ public class ChineseZodiac extends JFrame{
 		submitButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int year = Integer.parseInt(userYear.getText());	//Stores the string from JTextField as an int. NEEDS ERROR HANDLING.
-				zodiacText.setText(zodiacSign(year));				//Stores the returned String from method zodiacYear() into zodiacText.
+				int sign = year % 12;
+				zodiacText.setText("According to the Chinese New Year, your zodiac sign is the " + zodiacSign(year));				//Stores the returned String from method zodiacYear() into zodiacText.
+				
+				//Statements pull up new classes in popup window
+				if(sign == 0) {
+					Monkey monkey = new Monkey();
+					monkey.setVisible(true);
+				}
+				if(sign == 1) {
+					Rooster rooster = new Rooster();
+					rooster.setVisible(true);
+				}
 			}
 		});
 		
@@ -85,7 +96,7 @@ public class ChineseZodiac extends JFrame{
 		int sign = year % 12;
 		String[] animals = { "Monkey", "Rooster", "Dog", "Boar", "Rat", "Ox", "Tiger", "Rabbit", "Dragon", "Snake",
 				"Horse", "Ram" };
-		zodiac = "According to the Chinese New Year, your zodiac sign is the " + animals[sign];
+		zodiac = animals[sign];
 
 		return zodiac;
 	}
