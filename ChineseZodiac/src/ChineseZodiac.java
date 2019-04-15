@@ -83,59 +83,19 @@ public class ChineseZodiac extends JFrame {
 
 		/*****************************************************
 		 * Here is where the magic happens, this is where the program makes the button
-		 * have a reaction. Once the button is pushed this part of the program runs.
-		 * First we set all values of the JLabel, zodiacText, to null so if the program
-		 * is run more than once or the program runs into an error, the fields are
-		 * cleared. We then do some error checking making sure that the user's input is
-		 * a valid number and is in bounds to be a valid year. If the input passes, the
-		 * method zodiacImage is called and stored into the JLabel's icon box.
+		 * have a reaction. Once the button or the "enter" key is pushed, this part of
+		 * the program calls the output() method printing all data to the JLabel.
 		 ****************************************************/
 		submitButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				zodiacText.setIcon(null);
-				zodiacText.setText(null);
-				int year = 0;
-				try {
-					year = Integer.parseInt(userYear.getText());
-					if (year < 10000 && year > 0) {
-						int sign = year % 12;
-						zodiacText.setIcon(zodiacImage(sign));
-						userYear.setText("");
-					} else {
-						year /= 0;
-					}
-				} catch (NumberFormatException oof) {
-					userYear.setText("");
-					zodiacText.setText("Input invalid, must be an int. Please try again.");
-				} catch (ArithmeticException oof) {
-					userYear.setText("");
-					zodiacText.setText("Input invalid, must be a valid year. Please try again.");
-				}
+				output(userYear, zodiacText);
 			}
 		});
 
 		userYear.addKeyListener(new KeyAdapter() {
 			public void keyPressed(KeyEvent e) {
 				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-					zodiacText.setIcon(null);
-					zodiacText.setText(null);
-					int year = 0;
-					try {
-						year = Integer.parseInt(userYear.getText());
-						if (year < 10000 && year > 0) {
-							int sign = year % 12;
-							zodiacText.setIcon(zodiacImage(sign));
-							userYear.setText("");
-						} else {
-							year /= 0;
-						}
-					} catch (NumberFormatException oof) {
-						userYear.setText("");
-						zodiacText.setText("Input invalid, must be an int. Please try again.");
-					} catch (ArithmeticException oof) {
-						userYear.setText("");
-						zodiacText.setText("Input invalid, must be a valid year. Please try again.");
-					}
+					output(userYear, zodiacText);
 				}
 			}
 		});
@@ -167,5 +127,35 @@ public class ChineseZodiac extends JFrame {
 				new ImageIcon(path[sign]).getImage().getScaledInstance(830, 300, Image.SCALE_DEFAULT));
 
 		return zodiacImage;
+	}
+
+	/******************************************************************************
+	 * This is the method that evaluates the inputted year. First we set all values
+	 * of the JLabel, zodiacText, to null so if the program is run more than once or
+	 * the program runs into an error, the fields are cleared. We then do some error
+	 * checking making sure that the user's input is a valid number and is in bounds
+	 * to be a valid year. If the input passes, the method zodiacImage is called and
+	 * stored into the JLabel's icon box.
+	 *****************************************************************************/
+	public static void output(JTextField userYear, JLabel zodiacText) {
+		zodiacText.setIcon(null);
+		zodiacText.setText(null);
+		int year = 0;
+		try {
+			year = Integer.parseInt(userYear.getText());
+			if (year < 10000 && year > 0) {
+				int sign = year % 12;
+				zodiacText.setIcon(zodiacImage(sign));
+				userYear.setText("");
+			} else {
+				year /= 0;
+			}
+		} catch (NumberFormatException oof) {
+			userYear.setText("");
+			zodiacText.setText("Input invalid, must be an int. Please try again.");
+		} catch (ArithmeticException oof) {
+			userYear.setText("");
+			zodiacText.setText("Input invalid, must be a valid year. Please try again.");
+		}
 	}
 }
